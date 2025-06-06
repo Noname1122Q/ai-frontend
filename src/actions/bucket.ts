@@ -27,7 +27,7 @@ export async function generateUploadUrl(fileInfo: {
   });
   await gcs_client.bucket(env.GCS_BUCKET_NAME).setCorsConfiguration([
     {
-      origin: ["http://localhost:3000"],
+      origin: [env.BASE_URL],
       responseHeader: ["Content-Type"],
       method: ["PUT", "POST", "GET", "HEAD"],
       maxAgeSeconds: 3600,

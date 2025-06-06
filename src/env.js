@@ -17,6 +17,7 @@ export const env = createEnv({
     GCS_PROJECT_ID: z.string(),
     GCS_CLIENT_EMAIL: z.string(),
     GCS_PRIVATE_KEY: z.string(),
+    BASE_URL: z.string(),
   },
 
   client: {
@@ -33,6 +34,7 @@ export const env = createEnv({
     GCS_PROJECT_ID: process.env.GCS_PROJECT_ID,
     GCS_CLIENT_EMAIL: process.env.GCS_CLIENT_EMAIL,
     GCS_PRIVATE_KEY: process.env.GCS_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    BASE_URL: process.env.BASE_URL,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
