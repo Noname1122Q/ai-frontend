@@ -1,29 +1,51 @@
-# Create T3 App
+# 🎙️ Podcast Clipper
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+> An AI-powered tool to transform long podcast videos into short, engaging clips — complete with smart cropping, subtitle overlays, and seamless GCS integration.
 
-## What's next? How do I make an app with this?
+---
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## 🚀 Features
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- 🎯 **AI-Powered Clipping**: Automatically identifies meaningful segments from lengthy podcasts.
+- 🧠 **WhisperX-Driven Transcripts**: Generates accurate subtitles with precise timestamps.
+- 🎥 **Face-Aware Cropping**: Dynamically adjusts framing based on detected faces.
+- ☁️ **Cloud Storage Support**: Integrated with Google Cloud Storage for video input/output.
+- 🧱 **Step-by-Step Processing**: Built-in event-driven workflows using [Inngest].
+- 🖥️ **Sleek Frontend**: Built with Next.js, TailwindCSS, and ShadCN UI.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+**Backend**
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- Python
+- WhisperX
+- FFmpeg
+- TQDM, pathlib, subprocess
+- Modal (for hosting and job execution)
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+**Frontend**
 
-## How do I deploy this?
+- Next.js (App Router)
+- TailwindCSS, ShadCN UI
+- Inngest (event orchestration)
+- Next-Auth
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+**Infrastructure**
+
+- Google Cloud Storage (GCS)
+
+---
+
+## 🧪 How It Works
+
+1. Upload your long-form podcast video to GCS.
+2. Inngest triggers the processing pipeline via Modal.
+3. The Python backend:
+   - Extracts audio & frames
+   - Generates transcripts via WhisperX
+   - Detects faces and adjusts cropping
+   - Embeds subtitles and exports clips
+4. Final clips are stored back in GCS.
+5. Frontend reflects the clip status and previews.
